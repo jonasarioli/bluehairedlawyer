@@ -1,34 +1,40 @@
 package bluehairedlawyer
 
-import cr.co.arquetipos.currencies.Money
 import java.util.Date;
 
 class Account {
-
-	enum Type {
-		CREDIT, DEBIT
-	}
-	
-	enum AccountType {
-		HONORARIUM, CLIENT_EXPENSE, OFFICE_EXPENSE, CURRENT
-	}
-	
-	static belongsTo = [lawsuit: Lawsuits, bank: Bank]
-	
+			
 	Date date
-	String Description
+	String description
 	String code
 	String subCode
 	String observations
-	Type type	
-	AccountType account
 	BigDecimal value
+	Date paymentDate
+	BigDecimal paidValue
 	
 	String parcelNumber
 	Date expirationDate
-			
-	static embedded = ['money']
+	
+	AccountType accountType
+	OperationType operationType
+	
+	Person client
+	Bank bank
+	Lawsuits lawsuit
 	
     static constraints = {
+		code(nullable: true, blank:true)
+		subCode(nullable: true, blank:true)
+		operationType(nullable: true, blank:true)
+		client(nullable: true, blank:true)
+		bank(nullable: true, blank:true)
+		lawsuit(nullable: true, blank:true)
+		accountType(nullable: true, blank:true)
+		paymentDate(nullable: true, blank:true)
+		paidValue(nullable: true, blank:true)
+		expirationDate(nullable: true, blank:true)
+		observations(nullable: true, blank:true)
+		parcelNumber(nullable: true, blank:true)
     }
 }

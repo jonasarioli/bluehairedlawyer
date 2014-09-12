@@ -10,4 +10,6 @@ class Bank {
 	
     static constraints = {
     }
+	
+	String toString(){ return "${name}"}
 }

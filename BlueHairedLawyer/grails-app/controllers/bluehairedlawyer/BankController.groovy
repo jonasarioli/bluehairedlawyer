@@ -1,6 +1,11 @@
 package bluehairedlawyer
 
+/**
+ * BankController
+ * A controller class handles incoming web requests and performs actions such as redirects, rendering views and so on.
+ */
 class BankController {
 
-	def scaffold = Bank
+	static scaffold = Bank
+//	def index = { }
 }

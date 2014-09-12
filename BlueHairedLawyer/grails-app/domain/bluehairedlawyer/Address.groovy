@@ -5,13 +5,13 @@ class Address {
     String streetAddress;
 	String number;
     String city;
-    String state;
+    BrazilianStates state;
 	String district;
     String zipCode;
 
     //Date moveInDate;
     //Date moveOutDate;
-
+	static transients = [ '_deleted' ]
     static belongsTo = [person: Person]
 
     static constraints = {
@@ -19,11 +19,13 @@ class Address {
 		number(blank: false)
         city(blank: false)
 		district(blank: false)
-        state(blank: false, size: 2..2)
-        zipCode(blank: false, size: 8..8, validator: {val, obj -> val?.isNumber()})
+        state(blank: false)
+        zipCode(blank: false)
         /*moveInDate(nullable: false, max:  new Date())
         moveOutDate(nullable: true, validator: { val, obj ->
             val?.after(obj.moveInDate)
         })*/
     }
+	
+	String toString(){ return "${streetAddress}, ${number}. ${district} - ${zipCode}. ${city} - ${state}"}
 }

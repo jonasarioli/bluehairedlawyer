@@ -9,4 +9,6 @@ class Lawsuits {
     static constraints = {
 		number(blank: false)
     }
+	
+	String toString(){ return "${number}"}
 }
